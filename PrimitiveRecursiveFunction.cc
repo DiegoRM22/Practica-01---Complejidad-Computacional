@@ -64,6 +64,24 @@ int PrimitiveRecursiveFunction::Product(int firstArg, int secondArg) {
   }
 }
 
+/**
+ * @brief Construct the Primitive Recursive Function for power
+ * @param firstArg
+ * @param secondArg
+ * @return int
+ */
+int PrimitiveRecursiveFunction::Pow(int firstArg, int secondArg) {
+  std::cout << "Power of " << firstArg << " and " << secondArg << std::endl;
+  if (secondArg == 0) {
+    return this->One();
+  } else {
+    int rightProjection = this->Projection({firstArg, secondArg, this->Pow(firstArg, operationManager.Predecessor(secondArg))}, 2);
+    int leftProjection = this->Projection({firstArg, secondArg}, 0);
+    std::vector<int> combination = operationManager.Combination({rightProjection}, {leftProjection});
+    return this->Product(leftProjection, rightProjection);
+  }
+}
+
 
 
 

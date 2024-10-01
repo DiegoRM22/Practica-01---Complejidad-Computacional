@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
 
   std::vector<int> args = {firstArg, prf.Zero()};
 
-  std::cout << "Prod of " << firstArg << " and " << secondArg << " is " << prf.Product(firstArg, secondArg) << std::endl;
+  std::cout << "Pow of " << firstArg << " and " << secondArg << " is " << prf.Pow(firstArg, secondArg) << std::endl;
     
 
 
