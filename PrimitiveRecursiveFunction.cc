@@ -19,6 +19,16 @@ int PrimitiveRecursiveFunction::One() {
 }
 
 /**
+ * @brief Construct the Operation for Projection
+ * @param args
+ * @param position
+ * @return int
+ */
+int PrimitiveRecursiveFunction::Projection(std::vector<int> args, int position) {
+  return args[position];
+}
+
+/**
  * @brief Construct the Primitive Recursive Function for sum
  * @param firstArg
  * @param secondArg
@@ -37,14 +47,24 @@ int PrimitiveRecursiveFunction::Sum(int firstArg, int secondArg) {
 }
 
 /**
- * @brief Construct the Operation for Projection
- * @param args
- * @param position
+ * @brief Construct the Primitive Recursive Function for product
+ * @param firstArg
+ * @param secondArg
  * @return int
  */
-int PrimitiveRecursiveFunction::Projection(std::vector<int> args, int position) {
-  return args[position];
+int PrimitiveRecursiveFunction::Product(int firstArg, int secondArg) {
+  std::cout << "Product of " << firstArg << " and " << secondArg << std::endl;
+  if (secondArg == 0) {
+    return this->Zero();
+  } else {
+    int rightProjection = this->Projection({firstArg, secondArg, this->Product(firstArg, operationManager.Predecessor(secondArg))}, 2);
+    int leftProjection = this->Projection({firstArg, secondArg}, 0);
+    std::vector<int> combination = operationManager.Combination({rightProjection}, {leftProjection});
+    return this->Sum(leftProjection, rightProjection);
+  }
 }
+
+
 
 
   

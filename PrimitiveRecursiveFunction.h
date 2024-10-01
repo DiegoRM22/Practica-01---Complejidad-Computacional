@@ -11,6 +11,7 @@ class PrimitiveRecursiveFunction {
   int Zero();
   int One();
   int Sum(int firstArg, int secondArg);
+  int Product(int firstArg, int secondArg);
   int Projection(std::vector<int> args, int position);
 
  private:

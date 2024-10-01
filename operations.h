@@ -12,6 +12,7 @@ class Operation {
   int Predecessor(int arg);
   int Composition(int firstArg, int secondArg, std::function<int(int)> firstFunction,
                   std::function<int(int, int)> secondFunction);
+  std::vector<int> Combination(std::vector<int> firstArg, std::vector<int> secondArg);
     
 };
 
