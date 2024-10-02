@@ -1,6 +1,19 @@
+/**
+  * Universidad de La Laguna
+  * Escuela Superior de Ingeniería y Tecnología
+  * Grado en Ingeniería Informática
+  * Complejidad Computacional
+  *
+  * @author Diego Rodríguez Martín
+  * @since 02-10-2024
+  * @brief Implementation of the operations
+  *
+*/
+
 #include <functional>
 
 #include "operations.h"
+#include "PrimitiveRecursiveFunction.h"
 
 
 
@@ -20,7 +33,6 @@ int Operation::Successor(int arg) {
  */
 int Operation::Composition(int firstArg, int secondArg, std::function<int(int)> firstFunction,
                            std::function<int(int, int)> secondFunction) {
-  std::cout << "Composicion de las funciones: " << firstArg << " y " << secondArg << std::endl;
   return firstFunction(secondFunction(firstArg, secondArg));
 }
 
@@ -30,6 +42,9 @@ int Operation::Composition(int firstArg, int secondArg, std::function<int(int)> 
  * @return int
  */
 int Operation::Predecessor(int arg) {
+  if (arg == 0) {
+    return PrimitiveRecursiveFunction().Zero();
+  }
   return arg - 1;
 }
 
@@ -40,7 +55,6 @@ int Operation::Predecessor(int arg) {
  * @return std::vector<int>
  */
 std::vector<int> Operation::Combination(std::vector<int> firstArg, std::vector<int> secondArg) {
-  std::cout << "Combinacion de los vectores: " << firstArg[0] << " y " << secondArg[0] << std::endl;
   std::vector<int> result;
   result.push_back(secondArg[0]);
   result.push_back(firstArg[0]);

@@ -1,3 +1,15 @@
+/**
+  * Universidad de La Laguna
+  * Escuela Superior de Ingeniería y Tecnología
+  * Grado en Ingeniería Informática
+  * Complejidad Computacional
+  *
+  * @author Diego Rodríguez Martín
+  * @since 02-10-2024
+  * @brief Implementation of the Primitive Recursive Functions
+  *
+*/
+
 #include "PrimitiveRecursiveFunction.h"
 
 /**
@@ -15,7 +27,7 @@ int PrimitiveRecursiveFunction::Zero() {
  */
 int PrimitiveRecursiveFunction::One() {
   ++numberOfCalls;
-  return this->Zero() + 1;
+  return Operation().Successor(Zero());
 }
 
 /**
@@ -35,7 +47,7 @@ int PrimitiveRecursiveFunction::Projection(std::vector<int> args, int position) 
  * @return int
  */
 int PrimitiveRecursiveFunction::Sum(int firstArg, int secondArg) {
-  std::cout << "Sum of " << firstArg << " and " << secondArg << std::endl;
+  ++numberOfCalls;
   if (secondArg == 0) {
     return this->Projection({firstArg, this->Zero()}, 0);
   } else {
@@ -53,7 +65,7 @@ int PrimitiveRecursiveFunction::Sum(int firstArg, int secondArg) {
  * @return int
  */
 int PrimitiveRecursiveFunction::Product(int firstArg, int secondArg) {
-  std::cout << "Product of " << firstArg << " and " << secondArg << std::endl;
+  ++numberOfCalls;
   if (secondArg == 0) {
     return this->Zero();
   } else {
@@ -71,7 +83,7 @@ int PrimitiveRecursiveFunction::Product(int firstArg, int secondArg) {
  * @return int
  */
 int PrimitiveRecursiveFunction::Pow(int firstArg, int secondArg) {
-  std::cout << "Power of " << firstArg << " and " << secondArg << std::endl;
+  ++numberOfCalls;
   if (secondArg == 0) {
     return this->One();
   } else {

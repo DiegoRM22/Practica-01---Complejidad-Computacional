@@ -14,6 +14,7 @@ class PrimitiveRecursiveFunction {
   int Product(int firstArg, int secondArg);
   int Pow(int firstArg, int secondArg);
   int Projection(std::vector<int> args, int position);
+  int getNumberOfCalls() { return numberOfCalls; }
 
  private:
   int numberOfCalls;
